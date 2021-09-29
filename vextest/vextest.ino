@@ -27,22 +27,14 @@
 #include <Servo.h>    // servo library -- vexMotor relies on the Servo library
 
 vexMotor myVexMotor1;  // creates an instance of the vexMotor class
-// create an instance for each motor that is connected
-// to your device.
 
 void setup()
 {
   myVexMotor1.attach(3); // setup / attach the vexMotor onto pin 9
-  Serial.begin(9600);    // starts the Serial communication on Arduino
   myVexMotor1.write(100);
 }
 
 void loop()
 {
+
 }
-
-
-
-
-
-
