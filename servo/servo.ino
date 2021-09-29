@@ -1,16 +1,14 @@
 #include <Servo.h>
 
-Servo myservo;  // create servo object to control a servo
+Servo myservo;
 
 void setup() {
-  myservo.attach(6);  // attaches the servo on pin 9 to the servo object
+  myservo.attach(6);
 }
 
 void loop() {
-  myservo.write(90);                  // sets the servo position according to the scaled value
+  myservo.write(90);
   delay(1000); 
-  myservo.write(0);                  // sets the servo position according to the scaled value
+  myservo.write(0);
   delay(1000);    
-  // waits for the servo to get there
-  exit(0);
 }
