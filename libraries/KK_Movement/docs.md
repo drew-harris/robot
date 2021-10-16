@@ -23,7 +23,7 @@ Angle from -360 to 360 degrees.
 
 The angle can be any int and it will be adjusted for the 8 possible directions
 
-The speed is from -100 to 100
+The speed is from 0 to 100
 0 means no motion
 
 #### Stop
