@@ -1,44 +1,58 @@
 #include "Arduino.h"
 #include <Servo.h>
 #include "KK_Nav.h"
+#include "infraredsensor.h"
 
 int DEGREE_DELAY = 273;
 
-Navigation::Navigation(int pin) {
+Navigation::Navigation(int servoPin, int echoPin, int trigPin, int irPin) {
   navServo;
-  pinMode(pin, OUTPUT);
-  _servoPin = pin;
+
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  _servoPin = servoPin;
+  _trigPin = trigPin;
+  _echoPin = echoPin;
+  _irPin = irPin;
   navServo.attach(_servoPin);
+
 }
 
-void Navigation::turnRight() {
-  _angle += 90;
-  navServo.write(180);
-  delay(DEGREE_DELAY); 
-  navServo.write(90);
-}
 
-void Navigation::turnLeft() {
-  _angle -= 90;
-  navServo.write(0);
-  delay(DEGREE_DELAY); 
-  navServo.write(90);
-}
-
+// Add a delay after in the main code
 void Navigation::goToAngle(int angle) {
-  if (angle > _angle) {
-    int turns = (angle - _angle) / 90;
-    for (int i = 0; i < turns; ++i) {
-      turnRight();
-      delay(100);
-    }
-  } else if (angle < _angle) {
-    int turns = (_angle - angle) / 90;
-    for (int i = 0; i < turns; ++i) {
-      turnLeft();
-      delay(600);
-    }
-
-  }
-
+  _angle = angle;
+  navServo.write(_angle);
 }
+
+double Navigation::measureDistance() {
+  long duration;
+  long distance;
+
+  digitalWrite(_trigPin, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(_trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(_trigPin, LOW);
+
+  duration = pulseIn(_echoPin, HIGH);
+
+  distance = duration * 0.034 / 2;
+  return distance;
+}
+
+// TODO: Check this before merge
+char* Navigation::getLetters() {
+  int numCharsReadFromIR = scanIR(_irPin);
+  char* characters = getIR();
+
+  return characters;
+}
+
+
+int Navigation::getAngle() {
+  return _angle;
+}
+
