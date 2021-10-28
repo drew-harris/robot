@@ -2,13 +2,19 @@
 
 // TODO: CHANGE THESE!!!
 // servo pin, trig pin, echoPin, irPin
-Navigation nav(4, 5, 7, 2);
+
+
+Navigation* nav;
+
 void setup() {
-  nav.goToAngle(90);
-  nav.goToAngle(0);
+  nav = new Navigation(11, 22, 24, 99);
+
+  nav->goToAngle(0);
+
 
 }
 
 void loop() {
+
 
 }
