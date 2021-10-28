@@ -6,8 +6,6 @@
 int DEGREE_DELAY = 273;
 
 Navigation::Navigation(int servoPin, int echoPin, int trigPin, int irPin) {
-  navServo;
-
 
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
@@ -19,28 +17,26 @@ Navigation::Navigation(int servoPin, int echoPin, int trigPin, int irPin) {
 
 }
 
-
 // Add a delay after in the main code
 void Navigation::goToAngle(int angle) {
+  navServo.write(angle);
   _angle = angle;
-  navServo.write(_angle);
 }
 
 double Navigation::measureDistance() {
-  long duration;
-  long distance;
-
+  long duration; // variable for the duration of sound wave travel
+  double distance; // variable for the distance measurement
   digitalWrite(_trigPin, LOW);
   delayMicroseconds(2);
-
+  // Sets the trigPin HIGH (ACTIVE) for 10 microseconds
   digitalWrite(_trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(_trigPin, LOW);
-
+  // Reads the echoPin, returns the sound wave travel time in microseconds
   duration = pulseIn(_echoPin, HIGH);
-
+  // Calculating the distance
   distance = duration * 0.034 / 2;
-  return distance;
+  return duration;
 }
 
 // TODO: Check this before merge

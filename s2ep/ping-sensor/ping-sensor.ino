@@ -2,8 +2,7 @@
 #define trigPin 22 //attach pin D3 Arduino to pin Trig of HC-SR04
 
 // defines variables
-long duration; // variable for the duration of sound wave travel
-double distance; // variable for the distance measurement
+
 
 void setup() {
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an OUTPUT
@@ -12,6 +11,8 @@ void setup() {
 }
 
 double getDistance() {
+  long duration; // variable for the duration of sound wave travel
+double distance; // variable for the distance measurement
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   // Sets the trigPin HIGH (ACTIVE) for 10 microseconds
@@ -22,7 +23,7 @@ double getDistance() {
   duration = pulseIn(echoPin, HIGH);
   // Calculating the distance
   distance = duration * 0.034 / 2;
-  return distance;
+  return duration;
 }
 void loop() {
   Serial.println(getDistance());
