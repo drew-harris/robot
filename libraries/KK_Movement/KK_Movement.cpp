@@ -4,6 +4,10 @@
 
 
 //3 5 6 9
+
+// Dont go over 1.4 if speed is 70
+const int offset = 1;
+
 OmniMove::OmniMove() {
   pinMode(3, OUTPUT);
   pinMode(5, OUTPUT);
@@ -58,15 +62,15 @@ void OmniMove::go(int angle, int speed) {
   switch(correctAngle(angle)) {
     // Forward
     case 0:
-      motorControl(flMotor, speed);
+      motorControl(flMotor, speed * offset);
       motorControl(frMotor, -speed);
       motorControl(brMotor, -speed);
-      motorControl(blMotor, speed);
+      motorControl(blMotor, speed * offset);
       break;
 
     // Forward diagonal right
     case 45:
-      motorControl(flMotor, speed);
+      motorControl(flMotor, speed * offset);
       motorControl(frMotor, 0);
       motorControl(brMotor, -speed);
       motorControl(blMotor, 0);
@@ -75,10 +79,10 @@ void OmniMove::go(int angle, int speed) {
     
     // Right
     case 90:
-      motorControl(flMotor, speed);
+      motorControl(flMotor, speed * offset);
       motorControl(frMotor, speed);
       motorControl(brMotor, -speed);
-      motorControl(blMotor, -speed);
+      motorControl(blMotor, -speed * offset);
 
       break;
 
@@ -87,21 +91,21 @@ void OmniMove::go(int angle, int speed) {
       motorControl(flMotor, 0);
       motorControl(frMotor, speed);
       motorControl(brMotor, 0);
-      motorControl(blMotor, -speed);
+      motorControl(blMotor, -speed * offset);
 
       break;
 
     // Backward
     case 180:
-      motorControl(flMotor, -speed);
+      motorControl(flMotor, -speed * offset);
       motorControl(frMotor, speed);
       motorControl(brMotor, speed);
-      motorControl(blMotor, -speed);
+      motorControl(blMotor, -speed * offset);
       break;
 
     // Backward diagnonal left
     case 225:
-      motorControl(flMotor, -speed);
+      motorControl(flMotor, -speed * offset);
       motorControl(frMotor, 0);
       motorControl(brMotor, speed);
       motorControl(blMotor, 0);
@@ -110,10 +114,10 @@ void OmniMove::go(int angle, int speed) {
 
     // Left
     case 270:
-      motorControl(flMotor, -speed);
+      motorControl(flMotor, -speed * offset);
       motorControl(frMotor, -speed);
       motorControl(brMotor, speed);
-      motorControl(blMotor, speed);
+      motorControl(blMotor, speed * offset);
 
       break;
 
@@ -122,7 +126,7 @@ void OmniMove::go(int angle, int speed) {
       motorControl(flMotor, 0);
       motorControl(frMotor, -speed);
       motorControl(brMotor, 0);
-      motorControl(blMotor, speed);
+      motorControl(blMotor, speed * offset);
 
       break;
     default:

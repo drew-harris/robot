@@ -6,13 +6,18 @@
 
 class Navigation {
   public: 
-    Navigation(int pin);
+    Navigation(int servoPin, int trigPin, int echoPin, int irPin);
     void goToAngle(int angle);
-    void turnRight();
-    void turnLeft();
+    int getAngle();
+    double measureDistance();
+    char* getLetters();
   private:
     int _servoPin;
     int _angle = 0;
+    int _irPin;
+    int _trigPin;
+    int _echoPin;
+
     Servo navServo;
 };
 

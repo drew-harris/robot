@@ -9,7 +9,7 @@ LiquidCrystal_I2C *lcd;
 Servo myservo;
 
 void setup() {
-  myservo.attach(6);
+  myservo.attach(11);
   lcd = new LiquidCrystal_I2C(lcdAddress, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
   lcd->begin(16, 2); // initialize the lcd. Don't worry about the int values above.
   lcd->home();       // go to the top line
@@ -18,7 +18,7 @@ void setup() {
 }
 
 void loop() {
-  myservo.write(180);
+  myservo.write(0);
   lcd->begin(16, 2); // initialize the lcd. Don't worry about the int values above.
   lcd->home();       // go to the top line
   lcd->print("180"); // Print a welcome message
