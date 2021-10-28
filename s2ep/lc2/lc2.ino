@@ -1,6 +1,6 @@
 #include <LiquidCrystal_I2C.h>
 
-int lcdAddress = 0x27;
+int lcdAddress = 0x3F;
 int loopCount = 0;
 
 LiquidCrystal_I2C *lcd;
