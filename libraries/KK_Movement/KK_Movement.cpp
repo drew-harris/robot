@@ -6,7 +6,10 @@
 //3 5 6 9
 
 // Dont go over 1.4 if speed is 70
-const int offset = 1;
+const double flOffset = 1.18;
+const double frOffset = 1;
+const double brOffset = 1;
+const double blOffset = 1.18;
 
 OmniMove::OmniMove() {
   pinMode(3, OUTPUT);
@@ -62,71 +65,71 @@ void OmniMove::go(int angle, int speed) {
   switch(correctAngle(angle)) {
     // Forward
     case 0:
-      motorControl(flMotor, speed * offset);
-      motorControl(frMotor, -speed);
-      motorControl(brMotor, -speed);
-      motorControl(blMotor, speed * offset);
+      motorControl(flMotor, speed * flOffset);
+      motorControl(frMotor, -speed * frOffset);
+      motorControl(brMotor, -speed * brOffset);
+      motorControl(blMotor, speed * blOffset);
       break;
 
     // Forward diagonal right
     case 45:
-      motorControl(flMotor, speed * offset);
+      motorControl(flMotor, speed * flOffset);
       motorControl(frMotor, 0);
-      motorControl(brMotor, -speed);
+      motorControl(brMotor, -speed * brOffset);
       motorControl(blMotor, 0);
 
       break;
     
     // Right
     case 90:
-      motorControl(flMotor, speed * offset);
-      motorControl(frMotor, speed);
-      motorControl(brMotor, -speed);
-      motorControl(blMotor, -speed * offset);
+      motorControl(flMotor, speed * flOffset);
+      motorControl(frMotor, speed * frOffset);
+      motorControl(brMotor, -speed * brOffset);
+      motorControl(blMotor, -speed * blOffset);
 
       break;
 
     // backward diagonal right
     case 135:
       motorControl(flMotor, 0);
-      motorControl(frMotor, speed);
+      motorControl(frMotor, speed * frOffset);
       motorControl(brMotor, 0);
-      motorControl(blMotor, -speed * offset);
+      motorControl(blMotor, -speed * blOffset);
 
       break;
 
     // Backward
     case 180:
-      motorControl(flMotor, -speed * offset);
-      motorControl(frMotor, speed);
-      motorControl(brMotor, speed);
-      motorControl(blMotor, -speed * offset);
+      motorControl(flMotor, -speed * flOffset);
+      motorControl(frMotor, speed * frOffset);
+      motorControl(brMotor, speed * brOffset);
+      motorControl(blMotor, -speed * blOffset);
       break;
 
     // Backward diagnonal left
     case 225:
-      motorControl(flMotor, -speed * offset);
+      motorControl(flMotor, -speed * flOffset);
       motorControl(frMotor, 0);
-      motorControl(brMotor, speed);
+      motorControl(brMotor, speed * brOffset);
       motorControl(blMotor, 0);
 
       break;
 
     // Left
     case 270:
-      motorControl(flMotor, -speed * offset);
-      motorControl(frMotor, -speed);
-      motorControl(brMotor, speed);
-      motorControl(blMotor, speed * offset);
+      motorControl(flMotor, -speed * flOffset);
+      motorControl(frMotor, -speed * frOffset);
+      motorControl(brMotor, speed * brOffset);
+      motorControl(blMotor, speed * blOffset);
 
       break;
 
     // Forward diagonal left
     case 315:
       motorControl(flMotor, 0);
-      motorControl(frMotor, -speed);
+      motorControl(frMotor, -speed * frOffset);
       motorControl(brMotor, 0);
-      motorControl(blMotor, speed * offset);
+      motorControl(blMotor, speed * blOffset);
 
       break;
     default:
@@ -141,5 +144,3 @@ void OmniMove::stop() {
   motorControl(brMotor, 0);
   motorControl(blMotor, 0);
 }
-
-
