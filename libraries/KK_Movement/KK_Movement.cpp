@@ -8,8 +8,10 @@
 // Dont go over 1.4 if speed is 70
 const double flOffset = 1.09;
 const double frOffset = 1;
-const double brOffset = 1;
+const double brOffset = 1.0;
 const double blOffset = 1;
+
+const double bwOffset = 0.8;
 
 OmniMove::OmniMove() {
   pinMode(3, OUTPUT);
@@ -31,7 +33,9 @@ int OmniMove::motorControl(Servo& motor, double speed) {
   motor.write(map(speed, -100, 100, 1000, 2000));
 }
 
-int correctAngle(int inputAngle) {
+int OmniMove::correctAngle(int inputAngle) {
+
+  // TODO: Fix me to allow extreme turns
   if (inputAngle < 0) {
     inputAngle += 360.0;
   }
@@ -65,7 +69,7 @@ void OmniMove::go(int angle, int speed) {
   switch(correctAngle(angle)) {
     // Forward
     case 0:
-      motorControl(flMotor, speed * (flOffset - 0.09));
+      motorControl(flMotor, speed * 1.09 );
       motorControl(frMotor, -speed * frOffset);
       motorControl(brMotor, -speed * brOffset);
       motorControl(blMotor, speed * blOffset);
@@ -82,7 +86,7 @@ void OmniMove::go(int angle, int speed) {
     
     // Right
     case 90:
-      motorControl(flMotor, speed * flOffset);
+      motorControl(flMotor, speed * 1.2);
       motorControl(frMotor, speed * frOffset);
       motorControl(brMotor, -speed * brOffset);
       motorControl(blMotor, -speed * blOffset);
@@ -100,15 +104,15 @@ void OmniMove::go(int angle, int speed) {
 
     // Backward
     case 180:
-      motorControl(flMotor, -speed);
-      motorControl(frMotor, speed * frOffset);
+      motorControl(flMotor, -speed * 0.8);
+      motorControl(frMotor, speed * 1);
       motorControl(brMotor, speed * brOffset);
       motorControl(blMotor, -speed * blOffset);
       break;
 
     // Backward diagnonal left
     case 225:
-      motorControl(flMotor, -speed);
+      motorControl(flMotor, -speed * bwOffset);
       motorControl(frMotor, 0);
       motorControl(brMotor, speed * brOffset);
       motorControl(blMotor, 0);
@@ -117,7 +121,7 @@ void OmniMove::go(int angle, int speed) {
 
     // Left
     case 270:
-      motorControl(flMotor, -speed * 1.1);
+      motorControl(flMotor, -speed * bwOffset);
       motorControl(frMotor, -speed * frOffset);
       motorControl(brMotor, speed * brOffset);
       motorControl(blMotor, speed * blOffset);
@@ -138,9 +142,56 @@ void OmniMove::go(int angle, int speed) {
 
 }
 
+void OmniMove::turn(int angle) {
+  int direction = 1;
+  if (angle > 180) {
+    direction *=-1;
+  }
+  motorControl(flMotor, 20 * direction);
+  motorControl(frMotor, 20 * direction);
+  motorControl(brMotor, 20 * direction);
+  motorControl(blMotor, 20 * direction);
+  delay( angle * 5.35);
+
+  stop();
+}
+
+
 void OmniMove::stop() {
   motorControl(flMotor, 0);
   motorControl(frMotor, 0);
   motorControl(brMotor, 0);
   motorControl(blMotor, 0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void OmniMove::yeet() {
+               //yeet
+ motorControl(   flMotor , 90) /*yeet*/  ; /*yeet*/motorControl(  frMotor,           90);/*yeet*/motorControl(                      brMotor  , 90 * 2 /2);
+ motorControl(                               blMotor,90 *   1 *                     1);/**/delay(2000 + 1 /1 + 1/1);   motorControl(flMotor   ,-1 *    100);
+
+ //          ██╗░░░██╗███████╗███████╗████████╗
+ //          ╚██╗░██╔╝██╔════╝██╔════╝╚══██╔══╝
+ //          ░╚████╔╝░█████╗░░█████╗░░░░░██║░░░
+ //          ░░╚██╔╝░░██╔══╝░░██╔══╝░░░░░██║░░░
+ //          ░░░██║░░░███████╗███████╗░░░██║░░░
+ //          ░░░╚═╝░░░╚══════╝╚══════╝░░░╚═╝░░░
+ /*yeet*/motorControl(frMotor,  100)/*yeet                                                          yeet*/; /*yeet*/motorControl(brMotor,100);motorControl(blMotor,-100);delay(3000);stop();
+// drew wuz here
 }

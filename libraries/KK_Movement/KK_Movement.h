@@ -8,6 +8,9 @@ class OmniMove {
   public:
     void go(int angle, int speed);
     void stop();
+    void turnInPlace();
+    void turn(int angle);
+    void yeet();
     OmniMove();
 
   private:
@@ -23,6 +26,8 @@ class OmniMove {
     int _speed = 0;
     int _direction = 0;
     int motorControl(Servo& motor, double speed);
+
+    int correctAngle(int inputAngle);
 };
 
 #endif

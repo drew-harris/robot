@@ -10,19 +10,9 @@ boolean forwardTripped;
 
 void setup() {
   movement = new OmniMove();
-  nav = new Navigation(11, 24, 22, 99);
-  nav->goToAngle(90);
+  nav = new Navigation(2, 99, 99, 99);
+  nav->goToAngle(270);
   delay(2000);
-    movement->go(0, 50);
-  while (nav->measureDistance() > 4000 && nav->measureDistance() > 1) {
-  }
-  movement->stop();
-  nav->goToAngle(0);
-  delay(2000);
-    movement->go(90, 50);
-  while (nav->measureDistance() > 4000 && nav->measureDistance() > 1) {
-  }
-  movement->stop();
 }
 
 

@@ -19,6 +19,10 @@ Navigation::Navigation(int servoPin, int echoPin, int trigPin, int irPin) {
 
 // Add a delay after in the main code
 void Navigation::goToAngle(int angle) {
+  if (angle > 180) {
+    angle -= 360;
+  }
+  angle = map(angle, 90, -90, 0, 180);
   navServo.write(angle);
   _angle = angle;
 }
