@@ -7,34 +7,10 @@ void setup() {
   movement = new OmniMove();
   nav = new Navigation(2, 99, 99, 99);
 
-  delay(4000);
-
+  movement->go(270, 30);
+  delay(3000);
+  movement->stop();
 }
 
 void loop() {
-  movement->go(0, 30);
-  delay(1000);
-  movement->stop();
-  delay(1000);
-  movement->turn(90);
-  delay(3000);
-  movement->go(0, 30);
-  delay(1000);
-  movement->stop();
-  delay(1000);
-  movement->turn(90);
-  delay(3000);
-  movement->go(0, 30);
-  delay(1000);
-  movement->stop();
-  delay(1000);
-  movement->turn(90);
-  delay(3000);
-  movement->go(0, 30);
-  delay(1000);
-  movement->stop();
-  delay(1000);
-  movement->turn(90);
-  delay(3000);
-
 }

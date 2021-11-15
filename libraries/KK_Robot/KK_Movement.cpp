@@ -121,10 +121,10 @@ void OmniMove::go(int angle, int speed) {
 
     // Left
     case 270:
-      motorControl(flMotor, -speed * bwOffset);
-      motorControl(frMotor, -speed * frOffset);
+      motorControl(flMotor, -speed * 1.1);
+      motorControl(frMotor, -speed * 0.5);
       motorControl(brMotor, speed * brOffset);
-      motorControl(blMotor, speed * blOffset);
+      motorControl(blMotor, speed * 0.5);
 
       break;
 
@@ -142,7 +142,7 @@ void OmniMove::go(int angle, int speed) {
 
 }
 
-void OmniMove::turn(int angle) {
+void OmniMove::turnRobot(int angle) {
   int direction = 1;
   if (angle > 180) {
     direction *=-1;
@@ -164,34 +164,17 @@ void OmniMove::stop() {
   motorControl(blMotor, 0);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void OmniMove::yeet() {
                //yeet
  motorControl(   flMotor , 90) /*yeet*/  ; /*yeet*/motorControl(  frMotor,           90);/*yeet*/motorControl(                      brMotor  , 90 * 2 /2);
  motorControl(                               blMotor,90 *   1 *                     1);/**/delay(2000 + 1 /1 + 1/1);   motorControl(flMotor   ,-1 *    100);
 
- //          ██╗░░░██╗███████╗███████╗████████╗
- //          ╚██╗░██╔╝██╔════╝██╔════╝╚══██╔══╝
- //          ░╚████╔╝░█████╗░░█████╗░░░░░██║░░░
- //          ░░╚██╔╝░░██╔══╝░░██╔══╝░░░░░██║░░░
- //          ░░░██║░░░███████╗███████╗░░░██║░░░
- //          ░░░╚═╝░░░╚══════╝╚══════╝░░░╚═╝░░░
+ //        ██╗░░░██╗███████╗███████╗████████╗
+ //         ╚██╗░██╔╝██╔════╝██╔════╝╚══██╔══╝
+ //         ░╚████╔╝░█████╗░░█████╗░░░░░██║░░░
+ //         ░░╚██╔╝░░██╔══╝░░██╔══╝░░░░░██║░░░
+ //         ░░░██║░░░███████╗███████╗░░░██║░░░
+ //         ░░░╚═╝░░░╚══════╝╚══════╝░░░╚═╝░░░
  /*yeet*/motorControl(frMotor,  100)/*yeet                                                          yeet*/; /*yeet*/motorControl(brMotor,100);motorControl(blMotor,-100);delay(3000);stop();
 // drew wuz here
 }

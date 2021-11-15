@@ -11,7 +11,8 @@ boolean forwardTripped;
 void setup() {
   movement = new OmniMove();
   nav = new Navigation(2, 99, 99, 99);
-  nav->goToAngle(270);
+  movement.yeet();
+
   delay(2000);
 }
 
