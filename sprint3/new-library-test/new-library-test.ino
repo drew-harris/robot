@@ -2,10 +2,12 @@
 
 Robot* robot;
 void setup() {
-  robot = new Robot(2, 99, 99, 99, 44);
+  robot = new Robot(2, 38, 30, 99, 44);
   robot->turnNav(0);
+  robot->go(0, 30);
 
 }
 
 void loop() {
+  
 }
