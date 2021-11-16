@@ -6,12 +6,11 @@
 
 class OmniMove {
   public:
+    OmniMove();
     void go(int angle, int speed);
     void stop();
-    void turnInPlace();
-    void turn(int angle);
+    void turnRobot(int angle);
     void yeet();
-    OmniMove();
 
   private:
     int _flPin;

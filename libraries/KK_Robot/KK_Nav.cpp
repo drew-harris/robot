@@ -1,7 +1,7 @@
 #include "Arduino.h"
 #include <Servo.h>
 #include "KK_Nav.h"
-#include "infraredsensor.h"
+#include "./infraredsensor.h"
 
 int DEGREE_DELAY = 273;
 
@@ -18,7 +18,7 @@ Navigation::Navigation(int servoPin, int echoPin, int trigPin, int irPin) {
 }
 
 // Add a delay after in the main code
-void Navigation::goToAngle(int angle) {
+void Navigation::turnNav(int angle) {
   if (angle > 180) {
     angle -= 360;
   }

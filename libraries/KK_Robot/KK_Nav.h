@@ -7,7 +7,7 @@
 class Navigation {
   public: 
     Navigation(int servoPin, int trigPin, int echoPin, int irPin);
-    void goToAngle(int angle);
+    void turnNav(int angle);
     int getAngle();
     double measureDistance();
     char* getLetters();
