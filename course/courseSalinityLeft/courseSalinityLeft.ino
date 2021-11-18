@@ -6,11 +6,9 @@ void setup() {
   robot = new Robot(2, 53, 51, 26, 44);
   robot->turnNav(0);
 
-  // First turn  
-  //robot->go(90, 30);
+  // First turn
   robot->go(270, 30);
   while (robot->measureDistance() < 2000) {
-    
     delay(25);
   }
   robot->stop();
@@ -23,14 +21,11 @@ void setup() {
 
 
   while(robot->getLetters()[0]!='V'){
-    //robot->go(270,30);
     robot->go(90,30);
     delay(100);
     robot->stop();
     delay(100);
-
   }
-
 
   // move left a tad
   robot->stop();
@@ -41,21 +36,21 @@ void setup() {
 
   // go up half of ramp
   robot->go(0,30);
-  delay(2000);
-  
+  delay(1500);
   robot->stop();
   delay(2000);
-  // say 15 degrees
+  
+  // read incline off adc
   robot->print(String (robot->getIncline()));
   delay(2000);
 
   // go up rest of ramp
-//  robot->go(0, 30);
-//  delay(1000);
-//  robot->stop();
+  robot->go(0, 30);
+  delay(1000);
+  robot->stop();
+  delay(1000);
+
+  robot->dropSalinity();
   
 }  
-void loop() {
-
-  
-}
+void loop() {}

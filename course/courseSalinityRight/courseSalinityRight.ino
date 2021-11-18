@@ -6,10 +6,9 @@ void setup() {
   robot = new Robot(2, 53, 51, 26, 44);
   robot->turnNav(0);
 
-//  // First turn  
+  // First turn  
   robot->go(90, 30);
   while (robot->measureDistance() < 2000) {
-    
     delay(50);
   }
   robot->stop();
@@ -25,8 +24,6 @@ void setup() {
     robot->go(270,30);
     delay(150);
     robot->stop();
-
-
   }
 
   // go left a tad
@@ -55,7 +52,4 @@ void setup() {
   
 
 }  
-void loop() {
-
-  
-}
+void loop() {}
