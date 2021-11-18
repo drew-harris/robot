@@ -2,18 +2,30 @@
 
 Robot* robot;
 void setup() {
-  // put your setup code here, to run once:
-// servo, trigger, echo, ir, salinity servo
+  // servo, trigger, echo, ir, salinity servo
   robot = new Robot(2, 53, 51, 26, 44);
   robot->turnNav(0);
 
-  delay(1000);
+//  // First turn  
   robot->go(0);
-  delay(4000);
+  while (robot->measureDistance() > 3000) {
+    delay(50);
+  }
   robot->stop();
-}
+  delay(1000);
+  robot->turnRobot(20);
+  delay(1000);
 
+  robot->go(90);
+
+  while(robot->measureDistance() < 5000) {
+    delay(100);
+  }
+  robot->stop();
+
+
+}  
 void loop() {
-  // put your main code here, to run repeatedly:
 
+  
 }
