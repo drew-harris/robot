@@ -35,7 +35,7 @@ void setup() {
   robot->stop();
   delay(2000);
 
-  // find second hold
+  // find second hole
   robot->go(270);
   while (robot->measureDistance() < 3000) {
     
@@ -46,7 +46,6 @@ void setup() {
 
   robot->go(0);
   delay(2000);
-  robot->stop();
 }  
 void loop() {
 
