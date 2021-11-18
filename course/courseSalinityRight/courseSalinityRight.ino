@@ -19,7 +19,6 @@ void setup() {
   delay(1000);
   robot->stop();
 
-
   while(robot->getLetters()[0]!='S'&&robot->getLetters()[1]!='S'&&robot->getLetters()[2]!='S'){
     robot->go(270,30);
     delay(150);
@@ -48,8 +47,5 @@ void setup() {
   robot->stop();
 
   robot->dropSalinity();
-
-  
-
 }  
 void loop() {}

@@ -8,8 +8,7 @@ void setup() {
 
   // go to first wall  
   robot->go(0, 30);
-   while (robot->measureDistance() > 3000) {
-    
+  while (robot->measureDistance() > 3000) {
     delay(50);
   }
  
@@ -19,17 +18,14 @@ void setup() {
   // find first hole
   robot->go(270);
   while (robot->measureDistance() < 3000) {
-    
     delay(50);
   }
   robot->stop();
   delay(2000);
 
-  
   // go to second wall
   robot->go(0);
   while (robot->measureDistance() > 3000) {
-    
     delay(50);
   }
   robot->stop();
@@ -38,7 +34,6 @@ void setup() {
   // find second hole
   robot->go(270);
   while (robot->measureDistance() < 3000) {
-    
     delay(50);
   }
   robot->stop();
@@ -46,8 +41,6 @@ void setup() {
 
   robot->go(0);
   delay(2000);
-}  
-void loop() {
-
-  
 }
+
+void loop() {}

@@ -19,7 +19,6 @@ void setup() {
   delay(1000);
   robot->stop();
 
-
   while(robot->getLetters()[0]!='V'){
     robot->go(90,30);
     delay(100);
