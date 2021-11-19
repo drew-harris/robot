@@ -40,7 +40,7 @@ class Robot : public OmniMove, public Navigation {
     }
 
     int getSalinity() {
-      double slope = 12.884;
+      double slope = 38.652;
       double intercept = 172.341;
       int adc;
       adc = getConductivity();
