@@ -19,21 +19,19 @@ void setup() {
 
   // go forward a certain distance
   robot->go(0, 30);
-  delay(1300);
+  delay(1100);
   robot->stop();
   delay(1000);
-  robot->turnRobot(30);
+  robot->turnRobot(37);
   delay(1000);
 
 
-  while(robot->getLetters()[0]!='V'&&robot->getLetters()[1]!='V'&&robot->getLetters()[2]!='V'){
-    robot->go(90,30);
-    delay(150);
-    robot->stop();
-  }
+  /*while(robot->getLetters()[0]!='V'&&robot->getLetters()[1]!='V'&&robot->getLetters()[2]!='V'){*/
+    /*robot->go(90,30);*/
+    /*delay(150);*/
+    /*robot->stop();*/
+  /*}*/
 
-  robot->go(90);
-  delay(200);
   robot->stop();
   delay(1000);
 
@@ -51,7 +49,7 @@ void setup() {
   delay(2000);
   
   // get incline off adc
-  robot->print(String (robot->getIncline()));
+  //robot->print(String (robot->getIncline()+5));
   delay(2000);
 
   // go up half of ramp
@@ -60,7 +58,7 @@ void setup() {
   robot->stop();
   delay(2000);
 
-  robot->dropSalinity();
+  robot->pullUpSalinity();
 
   
 

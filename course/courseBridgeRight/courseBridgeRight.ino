@@ -6,7 +6,7 @@ void setup() {
   robot = new Robot(2, 51, 52, 26, 44);
   robot->turnNav(0);
 
-  //goOverBridge();
+  goOverBridge();
   delay(2000);
 
 
@@ -40,6 +40,9 @@ void setup() {
   while(robot->measureDistance() < 5000) {
     delay(100);
   }
+  delay(1000);
+  robot->turnRobot(25);
+  delay(1000);
   robot->stop();
   delay(1000);
   robot->go(0);
@@ -64,7 +67,7 @@ void goOverBridge() {
   delay(100);
   robot->turnRobot(90);
   delay(100);
-  robot->turnRobot(47);
+  robot->turnRobot(37);
 
 }
 void loop() {

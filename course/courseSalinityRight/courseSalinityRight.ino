@@ -18,7 +18,12 @@ void setup() {
   // go forward a certain distance
   robot->go(0, 30);
   delay(1000);
+  robot->turnRobot(30);
+  delay(1000);
   robot->stop();
+  delay(1000);
+  robot->turnRobot(30);
+  delay(1000);
 
 
   while(robot->getLetters()[0]!='S'&&robot->getLetters()[1]!='S'&&robot->getLetters()[2]!='S'){
@@ -47,13 +52,11 @@ void setup() {
 
   // go up half of ramp
   robot->go(0,30);
-  delay(1000);
+  delay(1700);
   robot->stop();
   delay(2000);
 
-  robot->dropSalinity();
-
-  
+  robot->pullUpSalinity();
 
 }  
 void loop() {
