@@ -3,7 +3,7 @@
 Robot* robot;
 void setup() {
   // servo, trigger, echo, ir, salinity servo
-  robot = new Robot(2, 53, 51, 26, 44);
+  robot = new Robot(2, 51, 52, 26, 44);
   robot->turnNav(0);
 
 //  // First turn  
@@ -49,6 +49,7 @@ void setup() {
   robot->go(0,30);
   delay(1000);
   robot->stop();
+  delay(2000);
 
   robot->dropSalinity();
 
