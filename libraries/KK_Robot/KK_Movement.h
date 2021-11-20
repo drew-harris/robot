@@ -8,6 +8,7 @@ class OmniMove {
   public:
     OmniMove();
     void go(int angle, int speed);
+    void go(int angle);
     void stop();
     void turnRobot(int angle);
     void yeet();

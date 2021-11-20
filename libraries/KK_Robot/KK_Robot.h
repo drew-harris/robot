@@ -29,27 +29,37 @@ class Robot : public OmniMove, public Navigation {
     }
 
     void pullUpSalinity() {
-      salinityMotor.write(80);
-      delay(1000);
-      salinityMotor.write(90);
+      // salinityMotor.write(80);
+      // delay(1000);
+      // salinityMotor.write(90);
+      salinityMotor.write(0);
     }
 
     void dropSalinity() {
-      salinityMotor.write(180);
-      delay(1000);
+     // salinityMotor.write(180);
+     // delay(2000);
+      salinityMotor.write(1700);
     }
 
-    int getSalinity() {
+    double getSalinity() {
       double slope = 12.884;
       double intercept = 172.341;
       int adc;
       adc = getConductivity();
-      int salinity;
+      double salinity;
       salinity = slope / (adc - intercept);
 
       return salinity;
 
     }
+
+    double getIncline() {
+       int sensorValue = analogRead(A1);
+       return double(sensorValue);
+       double angle = sensorValue / 52 + 0.5;
+       
+       return 10.1;
+    } 
 
   private:
     Servo salinityMotor;

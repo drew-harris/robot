@@ -64,6 +64,9 @@ int OmniMove::correctAngle(int inputAngle) {
 
 }
 
+void OmniMove::go(int angle) {
+  go(angle, 30);
+}
 
 void OmniMove::go(int angle, int speed) {
   switch(correctAngle(angle)) {
@@ -86,10 +89,10 @@ void OmniMove::go(int angle, int speed) {
     
     // Right
     case 90:
-      motorControl(flMotor, speed * 1.2);
-      motorControl(frMotor, speed * frOffset);
+      motorControl(flMotor, speed * 1.1);
+      motorControl(frMotor, speed * 0.9);
       motorControl(brMotor, -speed * brOffset);
-      motorControl(blMotor, -speed * blOffset);
+      motorControl(blMotor, -speed * 1.5);
 
       break;
 
@@ -121,10 +124,10 @@ void OmniMove::go(int angle, int speed) {
 
     // Left
     case 270:
-      motorControl(flMotor, -speed * 1.1);
-      motorControl(frMotor, -speed * 0.5);
-      motorControl(brMotor, speed * brOffset);
-      motorControl(blMotor, speed * 0.5);
+      motorControl(flMotor, -speed * 0.9 );
+      motorControl(frMotor, -speed * 1 );
+      motorControl(brMotor, speed *0.9);
+      motorControl(blMotor, speed );
 
       break;
 
@@ -146,13 +149,13 @@ void OmniMove::turnRobot(int angle) {
   int direction = 1;
   if (angle > 180) {
     direction *=-1;
+    angle -= 180;
   }
   motorControl(flMotor, 20 * direction);
   motorControl(frMotor, 20 * direction);
   motorControl(brMotor, 20 * direction);
   motorControl(blMotor, 20 * direction);
   delay( angle * 5.35);
-
   stop();
 }
 
